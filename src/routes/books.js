@@ -8,18 +8,18 @@ import initIfFileIfMissing from '../utils/initIfFileMissing';
 
 const getBooks = (req, res) => {
   // Pour activer cette route, commenter cette ligne et decommenté le reste
-  res.status(200).send({ message: 'route non activé' });
+  //res.status(200).send({ message: 'route non activé' });
 
-  // const pathBooks = path.join(__dirname, '../data/books.json');
-  // fs.readFile(pathBooks, 'utf8', (err, data) => {
-  //   if (err) {
-  //     console.log(err);
-  //     res.status(400).send({ message: 'error fetching books' });
-  //   } else {
-  //     console.log(data);
-  //     res.status(200).send(JSON.parse(data));
-  //   }
-  // });
+  const pathBooks = path.join(__dirname, '../data/books.json');
+  fs.readFile(pathBooks, 'utf8', (err, data) => {
+    if (err) {
+      console.log(err);
+      res.status(400).send({ message: 'error fetching books' });
+    } else {
+      console.log(data);
+      res.status(200).send(JSON.parse(data));
+    }
+  });
 };
 
 /*

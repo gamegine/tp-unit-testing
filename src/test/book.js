@@ -12,6 +12,39 @@ chai.use(chaiHttp);
 chai.use(chaiNock);
 chai.use(chaiAsPromised);
 
+describe('router', () => {
+    it('get /', (done) => {
+        chai.request('http://localhost:8080')
+            .get('/')
+            .end(function (err, res) {
+                expect(res).to.have.status(200);
+                done();
+            });
+    })
+
+
+    it('get /book', () => {
+        chai.request('http://localhost:8080/book')
+            .get('/')
+            .end(function (err, res) {
+                expect(res).to.have.status(200);
+                done();
+            });
+    })
+    it('post /book', () => {
+        chai.request('http://localhost:8080/book')
+            .post('/')
+            .end(function (err, res) {
+                expect(res).to.have.status(200);
+                done();
+            });
+    })
+
+    it('get /book/:id', () => { })
+    it('put /book/:id', () => { })
+    it('delete /book/:id', () => { })
+})
+
 // tout les packages et fonction nescessaire au test sont importé ici, bon courage
 
 // fait les Tests d'integration en premier
