@@ -72,26 +72,26 @@ const postBook = (req, res) => {
  */
 const getBook = (req, res) => {
   // Pour activer cette route, commenter cette ligne et decommenté le reste
-  res.status(200).send({ message: 'route non activé' });
+  //res.status(200).send({ message: 'route non activé' });
 
-  // const pathBooks = path.join(__dirname, '../data/books.json');
-  // fs.readFile(pathBooks, 'utf8', (err, data) => {
-  //   if (err) {
-  //     console.log(err);
-  //     res.status(400).send({ message: 'an Error occured' });
-  //   } else {
-  //     let obj = JSON.parse(data); //now it an object
-  //     const book = obj.books.find(element => {
-  //       if (element.id === req.params.id) return element;
-  //     });
-  //     if (!book) {
-  //       return res.status(400).send({ message: 'book does not exist' });
-  //     }
-  //     console.log(req.params.id);
-  //     console.log(book);
-  //     res.status(200).send({ message: 'book fetched', book });
-  //   }
-  // });
+  const pathBooks = path.join(__dirname, '../data/books.json');
+  fs.readFile(pathBooks, 'utf8', (err, data) => {
+    if (err) {
+      console.log(err);
+      res.status(400).send({ message: 'an Error occured' });
+    } else {
+      let obj = JSON.parse(data); //now it an object
+      const book = obj.books.find(element => {
+        if (element.id === req.params.id) return element;
+      });
+      if (!book) {
+        return res.status(400).send({ message: 'book does not exist' });
+      }
+      console.log(req.params.id);
+      console.log(book);
+      res.status(200).send({ message: 'book fetched', book });
+    }
+  });
 };
 
 /*
@@ -99,35 +99,35 @@ const getBook = (req, res) => {
  */
 const deleteBook = (req, res) => {
   // Pour activer cette route, commenter cette ligne et decommenté le reste
-  res.status(200).send({ message: 'route non activé' });
+  //  res.status(200).send({ message: 'route non activé' });
 
-  // const pathBooks = path.join(__dirname, '../data/books.json');
-  // fs.readFile(pathBooks, 'utf8', (err, data) => {
-  //   if (err) {
-  //     console.log(err);
-  //     res.status(400).send({ message: 'an Error occured' });
-  //   } else {
-  //     let obj = JSON.parse(data); //now it an object
-  //     const bookIndex = obj.books.findIndex(element => {
-  //       if (element.id === req.params.id) {
-  //         return element;
-  //       }
-  //     });
-  //     console.log(bookIndex);
-  //     if (bookIndex === -1) {
-  //       return res.status(400).send({ message: 'book does not exist' });
-  //     }
-  //     obj.books.splice(bookIndex, 1);
-  //     const json = JSON.stringify(obj);
-  //     fs.writeFile(pathBooks, json, 'utf8', (err, data) => {
-  //       if (err) {
-  //         return res.status(400).send({ message: 'error deleting the book' });
-  //       } else {
-  //         return res.status(200).send({ message: 'book successfully deleted' });
-  //       }
-  //     });
-  //   }
-  // });
+  const pathBooks = path.join(__dirname, '../data/books.json');
+  fs.readFile(pathBooks, 'utf8', (err, data) => {
+    if (err) {
+      console.log(err);
+      res.status(400).send({ message: 'an Error occured' });
+    } else {
+      let obj = JSON.parse(data); //now it an object
+      const bookIndex = obj.books.findIndex(element => {
+        if (element.id === req.params.id) {
+          return element;
+        }
+      });
+      console.log(bookIndex);
+      if (bookIndex === -1) {
+        return res.status(400).send({ message: 'book does not exist' });
+      }
+      obj.books.splice(bookIndex, 1);
+      const json = JSON.stringify(obj);
+      fs.writeFile(pathBooks, json, 'utf8', (err, data) => {
+        if (err) {
+          return res.status(400).send({ message: 'error deleting the book' });
+        } else {
+          return res.status(200).send({ message: 'book successfully deleted' });
+        }
+      });
+    }
+  });
 };
 
 /*
