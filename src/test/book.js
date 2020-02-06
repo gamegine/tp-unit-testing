@@ -61,6 +61,16 @@ describe('api', () => {
                 });
         })
 
+        it('delete /book/:id', (done) => {
+            chai.request('http://localhost:8080')
+                .delete('/book/0db0b43e-dddb-47ad-9b4a-e5fe9ec7c2a9')
+                .end(function (err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body.message).to.equal("book successfully deleted")
+                    done();
+                });
+        })
+
         it('get /book/:id', (done) => {
             chai.request('http://localhost:8080')
                 .get('/book/0db0b43e-dddb-47ad-9b4a-e5fe9ec7c2a9')
