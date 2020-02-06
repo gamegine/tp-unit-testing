@@ -30,10 +30,9 @@ describe('api', () => {
                 .get('/book')
                 .end(function (err, res) {
                     expect(res.body, "res json books").to.be.an('object')
-                    const obj = JSON.parse(res.text);
                     expect(res).to.have.status(200);
-                    expect(obj.books, "res json books").to.be.an('array')
-                    expect(obj.books, "res json books").to.have.lengthOf(0);
+                    expect(res.body.books, "res json books").to.be.an('array')
+                    expect(res.body.books, "res json books").to.have.lengthOf(0);
                     done();
                 });
         })
@@ -75,7 +74,6 @@ describe('api', () => {
             chai.request('http://localhost:8080')
                 .get('/book/0db0b43e-dddb-47ad-9b4a-e5fe9ec7c2a9')
                 .end(function (err, res) {
-                    const obj = JSON.parse(res.text);
                     expect(res).to.have.status(200);
                     expect(res.body.message).to.equal("book fetched")
                     expect(res.body.book, "res json books").to.be.an('object')
