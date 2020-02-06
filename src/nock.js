@@ -9,7 +9,7 @@ nock('http://localhost:3000')//root url
     .put('/book/:id')
     .reply(200, { message: 'book successfully updated' })
     .delete('/book/:id')
-    .reply(400, { message: 'book successfully deleted' })
+    .reply(200, { message: 'book successfully deleted' })
     .get('/book')
     .reply(400, { message: 'error fetching books' })
     .post('/book')

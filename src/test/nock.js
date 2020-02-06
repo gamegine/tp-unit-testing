@@ -31,7 +31,7 @@ describe('nock', () => {
         req.delete('/book/:id')
             .end(function (err, res) {
                 expect(res.body.message).to.equal('book successfully deleted')
-                expect(res).to.have.status(400);
+                expect(res).to.have.status(200);
                 done();
             });
     })
