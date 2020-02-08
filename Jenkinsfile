@@ -4,10 +4,9 @@ node {
 	stage('Clone repository') {
 		/* Let's make sure we have the repository cloned to our workspace */
 		checkout scm
-		//github => pending
-        steps {
+	}
+	stage('set status') {
             githubNotify status: "PENDING"
-        }
 	}
 	stage('Build image') {
 		app = docker.build('gamegine/unit-test')
